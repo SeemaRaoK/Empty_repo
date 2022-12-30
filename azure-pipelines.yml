@@ -4,8 +4,8 @@
 # https://aka.ms/yaml
 
 schedules:
-  - cron: '0 0 * * * *'
-    displayName: Daily Check each 1 hour
+  - cron: '0 0 */6 * * *'
+    displayName: Daily Check each 6 hour
     branches:
       include:
         - master
