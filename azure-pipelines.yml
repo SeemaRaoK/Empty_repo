@@ -3,47 +3,16 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-schedules:
-  - cron: '0 * * * *'
-    displayName: Daily Check each hour
-    branches:
-      include:
-        - master
-    always: 'true'
-
 trigger:
 - main
 
 pool:
   vmImage: ubuntu-latest
 
-jobs:
-- job: Job_1
-  displayName: Agent job 1
-  pool:
-    vmImage: windows-2019
-  steps:
-  - checkout: none
-    clean: true
-    fetchTags: false
-  - task: Bash@3
-    displayName: Bash Script
-    inputs:
-      targetType: inline
-      script: >
-        #!/bin/bash
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
 
-        DATENOW=`date +%Y%m%d-%H%M%S`
-
-
-        if curl -s --head  --request GET https://www.pocketgeekid.com | grep "200 OK" > /dev/null && curl -s --head --request GET https://pocketgekid.com | grep "200 OK" > /dev/null;
-
-
-        then echo "The HTTP server on www.pocketgeekid.com and pocketgeekid.com is up!" #> /dev/null
-
-
-        else echo  "##vso[task.logissue type=error]The HTTP server on www.pocketgeekid.com OR pocketgeekid.com is down at $DATENOW"
-
-        exit 1
-
-        fi
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    displayName: 'Run a multi-line script'
