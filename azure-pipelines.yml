@@ -27,7 +27,7 @@ steps:
       #!/bin/bash
       DATENOW=`date +%Y%m%d-%H%M%S`
       
-      if curl -s --head  --request GET https://www.pocketgeekid.com | grep "200 OK" > /dev/null && curl -s --head --request GET https://pocketgeekd.com | grep "200 OK" > /dev/null;
+      if curl -s --head  --request GET https://www.pocketgeekid.com | grep "200 OK" > /dev/null && curl -s --head --request GET https://pocketgeekid.com | grep "200 OK" > /dev/null;
       
       then echo "The HTTP server on www.pocketgeekid.com and pocketgeekid.com is UP!" #> /dev/null
       
