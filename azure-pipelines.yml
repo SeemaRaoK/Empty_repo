@@ -26,4 +26,4 @@ steps:
    script: |
      ./setup.sh
    failOnStderr: true
-   workingDirectory: "$(System.DefaultWorkingDirectory)/projectFolder/"
+   workingDirectory: "/home/vsts/work/1/s/"
