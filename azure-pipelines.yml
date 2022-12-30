@@ -24,6 +24,6 @@ steps:
   inputs:
    targetType: 'inline'
    script: |
-     ./setup.sh
+     ./urlcheck.sh
    failOnStderr: true
    workingDirectory: "/home/vsts/work/1/s/"
