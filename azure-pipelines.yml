@@ -7,7 +7,7 @@ trigger:
 
 schedules:
   - cron: "10 * * * *"
-    displayName: Check run hourly
+    displayName: Check hourly
     branches:
       include:
         - main
@@ -18,12 +18,9 @@ pool:
 
 steps:
 - script: echo Hello, world!
-  displayName: 'Run a cron job'
+  displayName: 'Run a one-line script'
 
-- task: Bash@3
-  inputs:
-   targetType: 'inline'
-   script: |
-     ./urlcheck.sh
-   failOnStderr: true
-   workingDirectory: "/home/vsts/work/1/s/"
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
