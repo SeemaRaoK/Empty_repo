@@ -26,7 +26,7 @@ steps:
       #!/bin/bash
       DATENOW=`date +"%Y-%m-%d %T"`
       
-      if curl -s --head  --request GET https://www.pocketgeekid.com | grep "200 OK" > /dev/null;
+      if curl -s --head  --request GET https://www.ocketgeekid.com | grep "200 OK" > /dev/null;
       then echo "The HTTP server on https://www.pocketgeekid.com is UP!" #> /dev/null
       
       else echo  "##vso[task.logissue type=error]The HTTP server on "https://www.pocketgeekid.com" was DOWN at $DATENOW"
@@ -41,6 +41,7 @@ steps:
     script: |
       #!/bin/bash
       DATENOW=`date +"%Y-%m-%d %T"`  
+     
       if curl -s --head  --request GET https://pocketgeekid.com | grep "200 OK" > /dev/null;
       then echo "The HTTP server on https://pocketgeekid.com is UP!" #> /dev/null
         
@@ -56,6 +57,7 @@ steps:
     script: |
       #!/bin/bash
       DATENOW=`date +"%Y-%m-%d %T"`  
+      
       if curl -s --head  --request GET https://www.pocketgeekprivacy.com | grep "200 OK" > /dev/null;
       then echo "The HTTP server on https://www.pocketgeekprivacy.com is UP!" #> /dev/null
         
@@ -71,7 +73,8 @@ steps:
     script: |
       #!/bin/bash
       DATENOW=`date +"%Y-%m-%d %T"`  
-      if curl -s -L --head  --request GET https://pocketgeekprivacy.com | grep "200 OK" > /dev/null;
+     
+      if curl -s -L --head  --request GET https://ocketgeekprivacy.com | grep "200 OK" > /dev/null;
       then echo "The HTTP server on https://pocketgeekprivacy.com is UP!" #> /dev/null
         
       else echo  "##vso[task.logissue type=error]The HTTP server on "https://pocketgeekprivacy.com" was DOWN at $DATENOW"
