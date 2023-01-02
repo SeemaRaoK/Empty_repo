@@ -18,6 +18,7 @@ pool:
 
 steps:
 - task: Bash@3
+  continueOnError: true
   displayName: 'Check PGID URL status'
   inputs:
     targetType: 'inline'
@@ -30,10 +31,11 @@ steps:
       
       else echo  "##vso[task.logissue type=error]The HTTP server on www.pocketgeekid.com OR pocketgeekid.com was DOWN at $DATENOW"
       exit 1
+      appendCommitMessageToRunName: false   
       fi
      
 - task: Bash@3
-  continueOnError: true
+  condition: always()
   displayName: 'Check PGP URL status'
   inputs:
     targetType: 'inline'
