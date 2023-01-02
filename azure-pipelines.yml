@@ -30,8 +30,7 @@ steps:
       then echo "The HTTP server on www.pocketgeekid.com and pocketgeekid.com is UP!" #> /dev/null
       
       else echo  "##vso[task.logissue type=error]The HTTP server on www.pocketgeekid.com OR pocketgeekid.com was DOWN at $DATENOW"
-      exit 1
-      fi
+      failOnStderr: true
      
 - task: Bash@3
   displayName: 'Check PGP URL status'
@@ -45,4 +44,3 @@ steps:
         
       else echo  "##vso[task.logissue type=error]The HTTP server on www.pocketgeekprivacy.com OR pocketgeekprivacy.com is DOWN"
       exit 1
-      fi
