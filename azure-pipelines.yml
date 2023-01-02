@@ -29,9 +29,11 @@ steps:
       then echo "The HTTP server on www.pocketgeekid.com and pocketgeekid.com is UP!" #> /dev/null
       
       else echo  "##vso[task.logissue type=error]The HTTP server on www.pocketgeekid.com OR pocketgeekid.com was DOWN at $DATENOW"
+      exit 1
       fi
      
 - task: Bash@3
+  continueOnError: true
   displayName: 'Check PGP URL status'
   inputs:
     targetType: 'inline'
