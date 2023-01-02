@@ -8,7 +8,7 @@ appendCommitMessageToRunName: false
 
 schedules:
   - cron: "10 * * * *"
-    displayName: Check hourly
+    displayName: Cron Job Hourly
     branches:
       include:
         - main
@@ -19,31 +19,61 @@ pool:
 
 steps:
 - task: Bash@3
-  displayName: 'Check PGID URL status'
+  displayName: 'Check PGID URL status with www'
   inputs:
     targetType: 'inline'
     script: |
       #!/bin/bash
       DATENOW=`date +"%Y-%m-%d %T"`
       
-      if curl -s --head  --request GET https://www.pocketgeekid.com | grep "200 OK" > /dev/null && curl -s --head --request GET https://pocketgeekid.com | grep "200 OK" > /dev/null;
-      then echo "The HTTP server on www.pocketgeekid.com and pocketgeekid.com is UP!" #> /dev/null
+      if curl -s --head  --request GET https://www.pocketgeekid.com | grep "200 OK" > /dev/null;
+      then echo "The HTTP server on https://www.pocketgeekid.com is UP!" #> /dev/null
       
-      else echo  "##vso[task.logissue type=error]The HTTP server on "https://www.pocketgeekid.com" OR "https://pocketgeekid.com" was DOWN at $DATENOW"
+      else echo  "##vso[task.logissue type=error]The HTTP server on "https://www.pocketgeekid.com" was DOWN at $DATENOW"
       exit 1
       fi
      
 - task: Bash@3
   condition: always()
-  displayName: 'Check PGP URL status'
+  displayName: 'Check PGID URL status without www'
   inputs:
     targetType: 'inline'
     script: |
       #!/bin/bash
         
-      if curl -s --head  --request GET https://www.pocketgeekprivacy.com | grep "200 OK" > /dev/null;
-      then echo "The HTTP server on www.pocketgeekprivacy.com is UP!" #> /dev/null
+      if curl -s --head  --request GET https://pocketgeekid.com | grep "200 OK" > /dev/null;
+      then echo "The HTTP server on https://pocketgeekid.com is UP!" #> /dev/null
         
-      else echo  "##vso[task.logissue type=error]The HTTP server on "https://www.pocketgeekprivacy.com" was DOWN at $DATENOW"
+      else echo  "##vso[task.logissue type=error]The HTTP server on "https://pocketgeekid.com" was DOWN at $DATENOW"
+      exit 1
+      fi
+
+- task: Bash@3
+  condition: always()
+  displayName: 'Check PGP URL status with www'
+  inputs:
+    targetType: 'inline'
+    script: |
+      #!/bin/bash
+        
+      if curl -s --head  --request GET https://pocketgeekprivacy.com | grep "200 OK" > /dev/null;
+      then echo "The HTTP server on https://pocketgeekprivacy.com is UP!" #> /dev/null
+        
+      else echo  "##vso[task.logissue type=error]The HTTP server on "https://pocketgeekprivacy.com" was DOWN at $DATENOW"
+      exit 1
+      fi
+
+- task: Bash@3
+  condition: always()
+  displayName: 'Check PGP URL status without www'
+  inputs:
+    targetType: 'inline'
+    script: |
+      #!/bin/bash
+        
+      if curl -s --head  --request GET https://pocketgeekprivacy.com | grep "200 OK" > /dev/null;
+      then echo "The HTTP server on https://pocketgeekprivacy.com is UP!" #> /dev/null
+        
+      else echo  "##vso[task.logissue type=error]The HTTP server on "https://pocketgeekprivacy.com" was DOWN at $DATENOW"
       exit 1
       fi
