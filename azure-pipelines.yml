@@ -19,6 +19,7 @@ pool:
 steps:
 - task: Bash@3
   displayName: 'Check PGID URL status'
+  continueOnError: true
   inputs:
     targetType: 'inline'
     script: |
@@ -33,7 +34,6 @@ steps:
       fi
      
 - task: Bash@3
-  continueOnError: true
   displayName: 'Check PGP URL status'
   inputs:
     targetType: 'inline'
