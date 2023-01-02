@@ -24,9 +24,9 @@ steps:
     targetType: 'inline'
     script: |
       #!/bin/bash
-      DATENOW=`date +%Y%m%d-%H%M%S`
+      DATENOW=`date +"%Y-%m-%d %T"`
       
-      if curl -s --head  --request GET https://www.pocketgeekid.comv | grep "200 OK" > /dev/null && curl -s --head --request GET https://pocketgeekid.com | grep "200 OK" > /dev/null;
+      if curl -s --head  --request GET https://www.pocketgeekid.com | grep "200 OK" > /dev/null && curl -s --head --request GET https://pocketgeekid.com | grep "200 OK" > /dev/null;
       then echo "The HTTP server on www.pocketgeekid.com and pocketgeekid.com is UP!" #> /dev/null
       
       else echo  "##vso[task.logissue type=error]The HTTP server on www.pocketgeekid.com OR pocketgeekid.com was DOWN at $DATENOW"
@@ -41,9 +41,9 @@ steps:
     script: |
       #!/bin/bash
         
-      if curl -s --head  --request GET https://www.pocketgeekprivac.com | grep "200 OK" > /dev/null;
+      if curl -s --head  --request GET https://www.pocketgeekprivacy.com | grep "200 OK" > /dev/null;
       then echo "The HTTP server on www.pocketgeekprivacy.com is UP!" #> /dev/null
         
-      else echo  "##vso[task.logissue type=error]The HTTP server on www.pocketgeekprivacy.com is DOWN"
+      else echo  "##vso[task.logissue type=error]The HTTP server on www.pocketgeekprivacy.com is DOWN at $DATENOW"
       exit 1
       fi
