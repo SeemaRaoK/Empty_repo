@@ -31,7 +31,7 @@ steps:
       
       else echo  "##vso[task.logissue type=error]The HTTP server on "https://www.pocketgeekid.com" was DOWN at $DATENOW"
       http_response= curl -I https://www.pocketgeekid.com 
-      echo "##vso[task.logissue type=error]$http_response"
+      echo "$http_response"
       exit 1
       fi
      
@@ -49,7 +49,7 @@ steps:
         
       else echo  "##vso[task.logissue type=error]The HTTP server on "https://pocketgeekid.com" was DOWN at $DATENOW"
       http_response= curl -I https://pocketgeekid.com 
-      echo "##vso[task.logissue type=error]$http_response"
+      echo "$http_response"
       exit 1
       fi
 
@@ -67,7 +67,7 @@ steps:
         
       else echo  "##vso[task.logissue type=error]The HTTP server on "https://www.pocketgeekprivacy.com" was DOWN at $DATENOW"
       http_response= curl -I https://www.pocketgeekprivacy.com 
-      echo "##vso[task.logissue type=error]$http_response"
+      echo "$http_response"
       exit 1
       fi
 
@@ -84,7 +84,7 @@ steps:
       then echo "The HTTP server on https://pocketgeekprivacy.com is UP!" #> /dev/null
         
       else echo  "##vso[task.logissue type=error]The HTTP server on "https://pocketgeekprivacy.com" was DOWN at $DATENOW"
-       http_response= curl -I https://pocketgeekprivacy.com 
-      echo "##vso[task.logissue type=error]$http_response"
+      http_response= curl -I https://pocketgeekprivacy.com 
+      echo "$http_response"
       exit 1
       fi
