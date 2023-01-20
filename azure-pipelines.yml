@@ -26,11 +26,11 @@ steps:
       #!/bin/bash
       DATENOW==`date +"%Y-%m-%d %r"`
       
-      if curl -s --head  --request GET https://www.pocketgeekid.com | grep "200 OK" > /dev/null;
+      if curl -s --head  --request GET https://www.pocketgeekidx.com | grep "200 OK" > /dev/null;
       then echo "The HTTP server on https://www.pocketgeekid.com is UP!" #> /dev/null
       
       else echo  "##vso[task.logissue type=error]The HTTP server on "https://www.pocketgeekid.com" was DOWN at $DATENOW"
-      http_response= curl -I https://www.pocketgeekid.com 
+      http_response= curl -I https://www.pocketgeekidx.com 
       echo "##vso[task.logissue type=error]$http_response"
       exit 1
       fi
